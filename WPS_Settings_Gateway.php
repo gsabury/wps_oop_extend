@@ -21,12 +21,14 @@ class WPS_Settings_Gateway extends WPS_Settings_Contract
 
     public function save_settings()
     {
+
+
         if (!current_user_can('save_wps_oop_data')) {
             return FALSE;
         }
 
-        if (isset($_POST['wps_gateway_saman_is_active'])) {
-            update_option('wps_gateway_saman_is_active', 1);
-        }
+        $wps_gateway_saman_is_active = isset($_POST['wps_gateway_saman_is_active']) ? 1 : 0;
+
+        update_option('wps_gateway_saman_is_active', $wps_gateway_saman_is_active);
     }
 }
